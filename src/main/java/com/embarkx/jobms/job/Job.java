@@ -23,8 +23,6 @@ public class Job {
     private Long companyId;
     
     
-    
-    
 	public Job() {
 		
 	}

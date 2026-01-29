@@ -1,23 +1,28 @@
 package embarkx.jobms.job.mapper;
 
+import java.util.List;
+
 import com.embarkx.jobms.job.Job;
-import com.embarkx.jobms.job.dto.JobWithCompanyDto;
+import com.embarkx.jobms.job.dto.JobDto;
 import com.embarkx.jobms.job.external.Company;
+import com.embarkx.jobms.job.external.Review;
 
 public class JobMapper {
 	
-	public static JobWithCompanyDto mapToJobWithCompanyDto(Job job, Company company) {
+	public static JobDto mapToJobWithCompanyDto(Job job, Company company, List<Review> reviews) {
 		
-		JobWithCompanyDto jobWithCompany = new JobWithCompanyDto();
+		JobDto jobDto = new JobDto();
 		
-		jobWithCompany.setDescription(job.getDescription());
-		jobWithCompany.setId(job.getId());
-		jobWithCompany.setLocation(job.getLocation());
-		jobWithCompany.setMaxSalary(job.getMaxSalary());
-		jobWithCompany.setMaxSalary(job.getMinSalary());
-		jobWithCompany.setTitle(job.getTitle());
-		jobWithCompany.setCompany(company);
+		jobDto.setDescription(job.getDescription());
+		jobDto.setId(job.getId());
+		jobDto.setLocation(job.getLocation());
+		jobDto.setMaxSalary(job.getMaxSalary());
+		jobDto.setMaxSalary(job.getMinSalary());
+		jobDto.setTitle(job.getTitle());		
+		jobDto.setCompany(company);
+		jobDto.setReviews(reviews);
 		
-		return jobWithCompany;
+		
+		return jobDto;
 	}
 }

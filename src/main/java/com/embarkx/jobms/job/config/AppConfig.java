@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class AppConfig {
 	
 	@Bean
-	@LoadBalanced // necessary to use as it allows to use spring cloud and eureka services
+	@LoadBalanced // necessary to use as it allows to use spring cloud and Eureka services
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}

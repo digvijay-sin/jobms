@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.embarkx.jobms.job.dto.JobWithCompanyDto;
+import com.embarkx.jobms.job.dto.JobDto;
 
 @RestController
 @RequestMapping("/jobs") // - sets the base URL for all the methods in this class, when used at class level
@@ -32,17 +32,17 @@ public class JobController {
 
 
 	@GetMapping
-	public ResponseEntity<List<JobWithCompanyDto>> getAllJobs() {
+	public ResponseEntity<List<JobDto>> getAllJobs() {
 		return ResponseEntity.ok(jobService.getAllJobs());
 	}
 
 
 	//@GetMapping("/{id}")
 	@RequestMapping(value="/{id}" ,method = RequestMethod.GET) //-- at method level it just act as mapper for the particular request 
-	public ResponseEntity<JobWithCompanyDto> getJobById(@PathVariable Long id) {
-		JobWithCompanyDto job = jobService.getJobById(id);
-		if(job != null) {
-			return ResponseEntity.ok(jobService.getJobById(id));	
+	public ResponseEntity<JobDto> getJobById(@PathVariable Long id) {
+		JobDto jobDto = jobService.getJobById(id);
+		if(jobDto != null) {
+			return ResponseEntity.ok(jobDto);	
 			
 		}
 		return ResponseEntity.notFound().build();
